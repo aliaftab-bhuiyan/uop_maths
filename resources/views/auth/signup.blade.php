@@ -1,6 +1,6 @@
 <x-layout>
     <h1 class="display-4 text-center my-3">signup form</h1>
-    <form class="col-md-4 mx-auto" action="{{ route('register') }}" method="POST">
+    <form class="col-md-5 mx-auto" action="{{ route('register') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="email">Email</label>

@@ -22,10 +22,13 @@
 <body>
     <x-navbar />
     <div class="d-flex">
-    <x-sidebar />
+        <x-sidebar />
         <div class="container">
-        <x-message />
-        {{ $slot }}
+            <x-message />
+            {{ $slot }}
+        </div>
+        <div class="flex-shrink-0 p-3" style="width: 280px;">
+            Google Ads
         </div>
     </div>
     <x-footer />

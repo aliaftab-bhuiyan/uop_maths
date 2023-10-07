@@ -1,4 +1,4 @@
-<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+<div class="flex-shrink-0 p-3 bg-white" style="width: 240px;">
     <ul class="list-unstyled ps-0">
     @if(Auth::guest())
         <li class="mb-1">
@@ -14,20 +14,31 @@
         </li>
     @else
         <li class="mb-1">
-            <button class="btn btn-toggle bg-light text-dark-emphasis rounded-0 w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                DASHBOARD
-            </button>
+            <span class="">DASHBOARD</span>
             <div class="collapse show" id="home-collapse">
                 <ul class="btn-toggle-nav list-group list-unstyled fw-normal pb-1 small">
-                    <li><a href="{{ route('ask_question') }}" class="list-group-item list-group-item-action border-0">Ask Question</a></li>
-                    <li><a href="{{ route('show_question') }}" class="list-group-item list-group-item-action border-0">Question Hub</a></li>
+                    <li>
+                        <a href="{{ route('feed') }}" class="btn btn-outline-light text-dark-emphasis rounded-0 w-100">
+                            Question Feed
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('ask_question') }}" class="btn btn-outline-light text-dark-emphasis rounded-0 w-100">
+                            Ask Question
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('show_question') }}" class="btn btn-outline-light text-dark-emphasis rounded-0 w-100">
+                            Question Hub
+                        </a>
+                    </li>
                 </ul>
             </div>
         </li>
         <li class="mb-1">
-            <button class="btn btn-toggle bg-light text-dark-emphasis rounded-0 w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+            <span class="">
                 TOP KEYWORDS
-            </button>
+            </span>
             <div class="collapse show" id="orders-collapse">
                 <ul class="btn-toggle-nav list-group list-unstyled fw-normal pb-1 small">
                     <li><a href="#" class="list-group-item list-group-item-action border-0">New</a></li>

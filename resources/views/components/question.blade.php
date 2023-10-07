@@ -4,9 +4,9 @@
             <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle" alt="">
         </div>
         <div class="flex-grow-1">
-            <a href="{{ route('detail_question', ['slug' => $question->slug]) }}" class="card-title mb-0 h4 d-inline-block text-truncate" style="max-width: 980px;">{{ $question->title }}</a>
+            <a href="{{ route('detail_question', ['slug' => $question->slug]) }}" class="card-title mb-0 h4 d-inline-block text-truncate" style="max-width: 720px;">{{ $question->title }}</a>
             <small class="text-muted d-block">{{ $question->updated_at->diffForHumans() }}</small>
-            <p class="card-subtitle mt-2 text-muted">#hello #world</p>
+            <p class="card-subtitle mt-2 text-muted">#{{ $question->keyword->pluck('name')->implode(' #') }}</p>
             <div class="d-flex align-items-center justify-content-between">
                 <div class="">
                     <a href="" class="card-link">39 Kudos</a>

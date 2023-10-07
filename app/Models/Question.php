@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Question extends Model
@@ -15,29 +17,42 @@ class Question extends Model
         'title',
         'slug',
         'body',
-        'user_id'
+        'user_id',
     ];
-
-    public static function generateUniqueSlug(string $title): string
+    public function setSlugAttribute($value): void
     {
-        $uglified = Str::slug($title);
-        $result = Question::all()->where('slug', '=', $uglified)->first();
+        $this->attributes['slug'] = $value;
+    }
 
-        if ($result === null) {
-            return $uglified;
+    public function generateSlug(): void
+    {
+        $baseSlug = Str::slug($this->title);
+
+        $slug = $baseSlug;
+        $counter = 1;
+
+        while (Question::where('slug', $slug)->where('id', '!=', $this->id)->exists()) {
+            $slug = $baseSlug . '-' . $counter++;
         }
 
-        //try to regenerate with name or title, default to the given value
-        if (isset($result->title)) {
-            $value = $result->title;
-        }
-
-        return self::generateUniqueSlug(Str::lower($value . '-' . time()));
+        $this->attributes['slug'] = $slug;
     }
 
     // relation with users
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+    // relation with keywords
+    public function keyword(): BelongsToMany
+    {
+        return $this->belongsToMany(Keyword::class);
+    }
+    // relation with solutions
+    public function solutions(): HasMany
+    {
+     return $this->hasMany(Solution::class)
+         ->whereNull('parent_id')
+         ->orderByDesc('updated_at');
     }
 }

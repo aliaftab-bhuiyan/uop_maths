@@ -3,7 +3,7 @@
         <a class="navbar-brand mb-0 h1" href="/">MathxClub</a>
         <div class="d-flex">
         @if(Auth::guest())
-            <a class="btn btn-success rounded-0 px-4" href="{{ route('signup') }}">Get Started</a>
+            <a class="btn btn-success px-4" href="{{ route('signup') }}">Get Started</a>
         @else
             <div class="dropdown">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
