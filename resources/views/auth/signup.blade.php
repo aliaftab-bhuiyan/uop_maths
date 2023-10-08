@@ -24,5 +24,6 @@
             @endif
         </div>
         <input type="submit" class="btn btn-dark w-100 btn-block" value="Register">
+        <p class="mt-3">Already have and account? <a href="{{ route('login') }}">Login</a> here.</p>
     </form>
 </x-layout>

@@ -18,6 +18,7 @@ class Question extends Model
         'slug',
         'body',
         'user_id',
+        'is_public'
     ];
     public function setSlugAttribute($value): void
     {
@@ -47,6 +48,11 @@ class Question extends Model
     public function keyword(): BelongsToMany
     {
         return $this->belongsToMany(Keyword::class);
+    }
+    // relation with likes
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes');
     }
     // relation with solutions
     public function solutions(): HasMany

@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug', 150)->unique()->nullable();
-            $table->text('body');
-            $table->boolean('is_public')->default(false);
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('question_id');
             $table->timestamps();
 
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->unique(['user_id', 'question_id']);
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('likes');
     }
 };

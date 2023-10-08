@@ -5,30 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>UoP Maths</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Option 1: Include in HTML -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
         a {
             text-decoration: none;
         }
     </style>
 </head>
-<body>
+<body class="bg-light">
     <x-navbar />
     <div class="d-flex">
         <x-sidebar />
-        <div class="container">
+        <div class="container-fluid">
             <x-message />
+{{--            {{ $top_keywords }}--}}
             {{ $slot }}
         </div>
-        <div class="flex-shrink-0 p-3" style="width: 280px;">
-            Google Ads
+        <div class="flex-shrink-0 m-3 ms-0 bg-white rounded" style="width: 280px;">
+{{--            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4364627907785487" crossorigin="anonymous"></script>--}}
         </div>
     </div>
     <x-footer />

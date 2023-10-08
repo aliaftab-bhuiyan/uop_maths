@@ -16,6 +16,10 @@
                 <small class="form-text text-danger">{{ $errors->first('password') }}</small>
             @endif
         </div>
-        <input type="submit" class="btn btn-dark w-100 btn-block" value="Sign In">
+        <input type="submit" class="btn btn-dark w-100 btn-block" value="Enter">
     </form>
+    <p class="text-muted text-center my-2">- OR -</p>
+    <div class="w-100 mt-2 text-center">
+        <a href="{{ route('signup') }}" class="btn btn-success col-md-5">Create New Account</a>
+    </div>
 </x-layout>
